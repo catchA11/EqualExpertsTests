@@ -54,4 +54,14 @@ public class StepDefs {
         return this.bookingRecord.getFirstName() + "\n" + this.bookingRecord.getLastName() + "\n" + this.bookingRecord.getTotalPrice()
                 + "\n" + this.bookingRecord.getDepositPaid() + "\n" + this.bookingRecord.getCheckInDate() + "\n" + this.bookingRecord.getCheckOutDate();
     }
+
+    @Given("^a booking record has been created")
+    public void createBooking() {
+        bookingForm.loadBookingRecord(driver, bookingRecord);
+        bookingForm.clickSaveButton();
+        String rowId = bookingForm.getRecordId(assembleExpectedBookingRecord());
+        if (rowId == null | rowId.isEmpty()) {
+            throw new IllegalStateException("record not successfully created");
+        }
+    }
 }
