@@ -42,3 +42,11 @@ Feature: Hotel booking scenarios
       | checkInDaysFromToday | checkOutDaysFromToday |
       | -2                   | -1                    |
       | -1                   | 1                     |
+
+  Scenario Outline: enter bookings with check-in date after check-out date
+    Given a default booking is entered with dates '<checkInDaysFromToday>' '<checkOutDaysFromToday>'
+    When the record is saved
+    Then the booking record is not displayed on the page
+    Examples:
+      | checkInDaysFromToday | checkOutDaysFromToday |
+      | 2                    | 1                     |
