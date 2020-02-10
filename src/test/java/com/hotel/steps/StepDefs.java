@@ -27,7 +27,7 @@ public class StepDefs {
         driver.get(PATH);
     }
 
-//    @After
+    @After
     public void cleanUp() {
         browserDriver.closeBrowser();
     }
@@ -81,5 +81,32 @@ public class StepDefs {
         assertThat(bookingForm.getRecordId(expectedBookingRecord))
                 .withFailMessage("Invalid booking record was found on page")
                 .isEmpty();
+    }
+
+    @Given("^a default booking is entered with '(.*)' set to '(.*)'$")
+    public void enterDefaultBookingPlusField(String fieldName, String value) {
+        switch (fieldName) {
+            case "First Name":
+                bookingRecord.setFirstName(value);
+                break;
+            case "Last Name":
+                bookingRecord.setLastName(value);
+                break;
+            case "Price":
+                bookingRecord.setPrice(value);
+                break;
+            case "Deposit Paid":
+                bookingRecord.setDepositPaid(value);
+                break;
+            case "Check In Days From Today":
+                bookingRecord.setCheckIn(Integer.parseInt(value));
+                break;
+            case "Check Out Days From Today":
+                bookingRecord.setCheckOut(Integer.parseInt(value));
+                break;
+            default:
+                throw new IllegalStateException("fieldName " + fieldName + " not recognised");
+        }
+        bookingForm.loadBookingRecord(driver, bookingRecord);
     }
 }

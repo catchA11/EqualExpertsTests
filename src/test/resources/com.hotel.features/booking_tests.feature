@@ -10,3 +10,15 @@ Feature: Hotel booking scenarios
     When the record is deleted
     Then the booking record is not displayed on the page
 
+  Scenario Outline: create valid bookings
+    Given a default booking is entered with '<field>' set to '<value>'
+    When the record is saved
+    Then the booking record is displayed on the page
+    Examples:
+      | field                    | value |
+      | Deposit Paid             | true  |
+      | Deposit Paid             | false |
+      | Check In Days From Today | 0     |
+      | Price                    | 0     |
+      | Price                    | 99.99 |
+

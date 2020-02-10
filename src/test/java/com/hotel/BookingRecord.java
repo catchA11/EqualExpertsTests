@@ -57,5 +57,28 @@ public class BookingRecord {
         return depositPaid;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setDepositPaid(String depositPaid) {
+        this.depositPaid = depositPaid;
+    }
+
+    public void setCheckIn(int daysFromToday) {
+        this.checkInDate = getDate(daysFromToday);
+    }
+
+    public void setCheckOut(int daysFromToday) {
+        this.checkOutDate = getDate(daysFromToday);
+    }
 }
 
