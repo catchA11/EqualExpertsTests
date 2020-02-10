@@ -116,6 +116,11 @@ public class StepDefs {
         bookingForm.loadBookingRecord(driver, bookingRecord);
     }
 
+    @Given("^a default booking is entered with '(.*)' left blank$")
+    public void enterDefaultBookingWithBlankField(String field){
+        enterDefaultBookingPlusField(field, "");
+    }
+
     @Given("^a default booking is entered with dates '(.*)' '(.*)'$")
     public void enterDefaultBookingWithDates(int checkIn, int checkOut) {
         bookingRecord.setCheckIn(checkIn);

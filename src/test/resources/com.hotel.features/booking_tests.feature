@@ -34,6 +34,18 @@ Feature: Hotel booking scenarios
       | Check In Date  | ?     |
       | Check Out Date | -     |
 
+  Scenario Outline: create invalid bookings with blank mandatory fields
+    Given a default booking is entered with '<field>' left blank
+    When the record is saved
+    Then the booking record is not displayed on the page
+    Examples:
+      | field          |
+      | First Name     |
+      | Last Name      |
+      | Price          |
+      | Check In Date  |
+      | Check Out Date |
+
   Scenario Outline: create backdated booking
     Given a default booking is entered with dates '<checkInDaysFromToday>' '<checkOutDaysFromToday>'
     When the record is saved
