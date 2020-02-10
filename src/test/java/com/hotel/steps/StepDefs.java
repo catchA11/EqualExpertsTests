@@ -115,4 +115,11 @@ public class StepDefs {
         }
         bookingForm.loadBookingRecord(driver, bookingRecord);
     }
+
+    @Given("^a default booking is entered with dates '(.*)' '(.*)'$")
+    public void enterDefaultBookingWithDates(int checkIn, int checkOut) {
+        bookingRecord.setCheckIn(checkIn);
+        bookingRecord.setCheckOut(checkOut);
+        bookingForm.loadBookingRecord(driver, bookingRecord);
+    }
 }

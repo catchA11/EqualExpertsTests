@@ -33,3 +33,12 @@ Feature: Hotel booking scenarios
       | Price          | £100  |
       | Check In Date  | ?     |
       | Check Out Date | -     |
+
+  Scenario Outline: create backdated booking
+    Given a default booking is entered with dates '<checkInDaysFromToday>' '<checkOutDaysFromToday>'
+    When the record is saved
+    Then the booking record is displayed on the page
+    Examples:
+      | checkInDaysFromToday | checkOutDaysFromToday |
+      | -2                   | -1                    |
+      | -1                   | 1                     |
