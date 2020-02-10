@@ -74,4 +74,12 @@ public class StepDefs {
             throw new IllegalStateException("Cannot delete record, record not found on page");
         }
     }
+
+    @Then("^the booking record is not displayed on the page$")
+    public void verifyBookingRecordIsNotFoundOnThePage() {
+        String expectedBookingRecord = assembleExpectedBookingRecord();
+        assertThat(bookingForm.getRecordId(expectedBookingRecord))
+                .withFailMessage("Invalid booking record was found on page")
+                .isEmpty();
+    }
 }

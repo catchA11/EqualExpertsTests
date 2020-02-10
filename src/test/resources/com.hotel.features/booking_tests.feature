@@ -8,5 +8,5 @@ Feature: Hotel booking scenarios
   Scenario: delete booking
     Given a booking record has been created
     When the record is deleted
-#    Then the booking record is not displayed on the page
+    Then the booking record is not displayed on the page
 
