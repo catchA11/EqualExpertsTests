@@ -64,4 +64,14 @@ public class StepDefs {
             throw new IllegalStateException("record not successfully created");
         }
     }
+
+    @When("^the record is deleted$")
+    public void deleteBooking() {
+        String rowId = bookingForm.getRecordId(assembleExpectedBookingRecord());
+        if (rowId != null) {
+            bookingForm.clickDeleteButton(rowId);
+        } else {
+            throw new IllegalStateException("Cannot delete record, record not found on page");
+        }
+    }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -94,5 +95,21 @@ public class BookingForm {
             }
         }
         return rowId;
+    }
+
+    public void clickDeleteButton(String rowId) {
+        WebElement deleteButton = getDeleteButton(rowId);
+        deleteButton.click();
+        waitForRecordDeletion(deleteButton);
+    }
+
+    private WebElement getDeleteButton(String rowId) {
+        String deleteCSS = "input[onclick*='deleteBooking(" + rowId + ")']";
+        return getWebElement(deleteCSS);
+    }
+
+    private void waitForRecordDeletion(WebElement deleteButton) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.invisibilityOf(deleteButton));
     }
 }
