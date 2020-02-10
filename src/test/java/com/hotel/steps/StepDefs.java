@@ -104,6 +104,12 @@ public class StepDefs {
             case "Check Out Days From Today":
                 bookingRecord.setCheckOut(Integer.parseInt(value));
                 break;
+            case "Check In Date":
+                bookingRecord.setCheckIn(value);
+                break;
+            case "Check Out Date":
+                bookingRecord.setCheckOut(value);
+                break;
             default:
                 throw new IllegalStateException("fieldName " + fieldName + " not recognised");
         }

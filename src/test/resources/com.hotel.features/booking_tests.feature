@@ -1,3 +1,4 @@
+#noinspection NonAsciiCharacters
 Feature: Hotel booking scenarios
 
   Scenario: create valid booking
@@ -30,3 +31,5 @@ Feature: Hotel booking scenarios
       | field          | value |
       | Price          | ABC   |
       | Price          | £100  |
+      | Check In Date  | ?     |
+      | Check Out Date | -     |

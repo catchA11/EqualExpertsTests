@@ -77,8 +77,16 @@ public class BookingRecord {
         this.checkInDate = getDate(daysFromToday);
     }
 
+    public void setCheckIn(String date) {
+        this.checkInDate = date;
+    }
+
     public void setCheckOut(int daysFromToday) {
         this.checkOutDate = getDate(daysFromToday);
+    }
+
+    public void setCheckOut(String date) {
+        this.checkOutDate = date;
     }
 }
 
