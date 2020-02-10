@@ -22,3 +22,11 @@ Feature: Hotel booking scenarios
       | Price                    | 0     |
       | Price                    | 99.99 |
 
+  Scenario Outline: create invalid bookings
+    Given a default booking is entered with '<field>' set to '<value>'
+    When the record is saved
+    Then the booking record is not displayed on the page
+    Examples:
+      | field          | value |
+      | Price          | ABC   |
+      | Price          | £100  |
