@@ -7,8 +7,11 @@ import com.hotel.pageobjects.BookingForm;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StepDefs {
     BrowserDriver browserDriver = new BrowserDriver();
@@ -37,5 +40,18 @@ public class StepDefs {
     @When("^the record is saved$")
     public void saveRecord() {
         bookingForm.clickSaveButton();
+    }
+
+    @Then("^the booking record is displayed on the page$")
+    public void verifyBookingRecordIsFoundOnThePage() {
+        String expectedBookingRecord = assembleExpectedBookingRecord();
+        assertThat(bookingForm.getRecordId(expectedBookingRecord))
+                .withFailMessage("Expected booking record not found on page")
+                .isNotNull();
+    }
+
+    private String assembleExpectedBookingRecord() {
+        return this.bookingRecord.getFirstName() + "\n" + this.bookingRecord.getLastName() + "\n" + this.bookingRecord.getTotalPrice()
+                + "\n" + this.bookingRecord.getDepositPaid() + "\n" + this.bookingRecord.getCheckInDate() + "\n" + this.bookingRecord.getCheckOutDate();
     }
 }
