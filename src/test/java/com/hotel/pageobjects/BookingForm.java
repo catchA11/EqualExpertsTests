@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.hotel.steps.StepDefs.driver;
+
 public class BookingForm {
     private static final String FIRST_NAME_TEXT_BOX_ID = "firstname";
     private static final String LAST_NAME_TEXT_BOX_ID = "lastname";
@@ -13,6 +15,7 @@ public class BookingForm {
     private static final String DEPOSIT_PAID_TEXT_BOX_ID = "depositpaid";
     private static final String CHECK_IN_TEXT_BOX_ID = "checkin";
     private static final String CHECK_OUT_TEXT_BOX_ID = "checkout";
+    private static final String SAVE_BUTTON_ID = "input[value*='Save']";
 
     public void loadBookingRecord(WebDriver driver, BookingRecord bookingRecord) {
         enterBookingFormField(driver, bookingRecord.getFirstName(), By.id(FIRST_NAME_TEXT_BOX_ID));
@@ -32,5 +35,14 @@ public class BookingForm {
         WebElement depositPaid = driver.findElement(By.id(DEPOSIT_PAID_TEXT_BOX_ID));
         Select dropdown = new Select(depositPaid);
         dropdown.selectByVisibleText(depositChoice);
+    }
+
+    public void clickSaveButton() {
+        WebElement saveButton = getWebElement(SAVE_BUTTON_ID);
+        saveButton.click();
+    }
+
+    private WebElement getWebElement(String identifier) {
+        return driver.findElement(By.cssSelector(identifier));
     }
 }

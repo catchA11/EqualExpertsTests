@@ -7,6 +7,7 @@ import com.hotel.pageobjects.BookingForm;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 
 public class StepDefs {
@@ -33,5 +34,8 @@ public class StepDefs {
         bookingForm.loadBookingRecord(driver, bookingRecord);
     }
 
-
+    @When("^the record is saved$")
+    public void saveRecord() {
+        bookingForm.clickSaveButton();
+    }
 }
