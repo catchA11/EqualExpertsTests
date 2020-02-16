@@ -12,4 +12,8 @@ import org.junit.runner.RunWith;
         glue = {"classpath:com/hotel/steps"}
 )
 public class RunCucumberTest {
+    public static void main(final String[] args) throws Throwable {
+        String[] arguments = {"--plugin", "html:build/reports/cucumber", "--glue", "com/hotel/steps", "classpath:com.hotel.features"};
+        cucumber.api.cli.Main.main(arguments);
+    }
 }
