@@ -7,7 +7,7 @@ import static org.apache.commons.lang3.time.DateFormatUtils.format;
 public class BookingRecord {
     private String firstName;
     private String lastName;
-    private String price = "100";
+    private String price = "100.99";
     private String depositPaid = "true";
     private String checkInDate;
     private String checkOutDate;

@@ -1,7 +1,7 @@
 #noinspection NonAsciiCharacters
 Feature: Hotel booking scenarios
 
-  Scenario: create valid booking
+  Scenario: create default valid booking
     Given a default booking with valid data is entered
     When the record is saved
     Then the booking record is displayed on the page
@@ -30,7 +30,8 @@ Feature: Hotel booking scenarios
     Examples:
       | field          | value |
       | Price          | ABC   |
-      | Price          | £100  |
+      | Price          | !     |
+      | Price          | 1 0   |
       | Check In Date  | ?     |
       | Check Out Date | -     |
 
