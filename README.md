@@ -34,6 +34,9 @@ No other browsers are configured to run with these tests.
 
 ## Dependencies
 
+* Java 8 or later
+* Maven
+
 This test suite is configured to run in on the following operating systems:
 * Mac OS X (verified on Catalina)
 * MS Windows (verified on Windows 10)
