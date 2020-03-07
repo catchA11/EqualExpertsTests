@@ -57,12 +57,10 @@ public class StepDefs {
 
     @Given("^a booking record has been created")
     public void createBooking() {
+        this.bookingRecord = new BookingRecord();
         bookingForm.loadBookingRecord(driver, bookingRecord);
         bookingForm.clickSaveButton();
-        String rowId = bookingForm.getRecordId(assembleExpectedBookingRecord());
-        if (rowId == null | rowId.isEmpty()) {
-            throw new IllegalStateException("record not successfully created");
-        }
+        bookingForm.waitForBookingToLoad(assembleExpectedBookingRecord());
     }
 
     @When("^the record is deleted$")
@@ -117,7 +115,7 @@ public class StepDefs {
     }
 
     @Given("^a default booking is entered with '(.*)' left blank$")
-    public void enterDefaultBookingWithBlankField(String field){
+    public void enterDefaultBookingWithBlankField(String field) {
         enterDefaultBookingPlusField(field, "");
     }
 

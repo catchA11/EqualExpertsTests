@@ -112,4 +112,11 @@ public class BookingForm {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.invisibilityOf(deleteButton));
     }
+
+    public void waitForBookingToLoad(String expectedRecord) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        String rowId = getRecordId(expectedRecord);
+        log.info("rowId = " + rowId);
+        wait.until(ExpectedConditions.visibilityOf(getDeleteButton(rowId))) ;
+    }
 }
