@@ -1,4 +1,3 @@
-#noinspection NonAsciiCharacters
 Feature: Hotel booking scenarios
 
   Scenario: create default valid booking
